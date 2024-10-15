@@ -25,5 +25,5 @@ jobs:
       with:
         python-version: "3.12"
     - run: |
-        pip install -r requirement.pip && python updater/updater.py
+        pip install -r requirements.pip && python updater/updater.py
 
