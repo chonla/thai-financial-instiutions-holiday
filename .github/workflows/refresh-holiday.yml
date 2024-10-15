@@ -27,3 +27,7 @@ jobs:
     - run: |
         pip install -r requirements.pip && python updater/updater.py
 
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      id: auto-commit-action #mandatory for the output to show up in ${{ steps }}
+      with:
+        commit_message: "Auto update holiday data"
