@@ -24,6 +24,7 @@ class Name(StrEnum):
 
 
 class Holiday(NamedTuple):
+    date_stamp: str # YYYYMMDD
     day_of_week_index: int # Sun=0, ..., Sat=6
     day_of_week_th: str
     day_of_week_en: str
@@ -39,6 +40,12 @@ class Holiday(NamedTuple):
     year_be: int # In Buddhist era
     description_th: str
     description_en: str
+
+
+class HolidayInYear(NamedTuple):
+    year_ce: int
+    year_be: int
+    data: List[Holiday]
 
 
 class HolidayDetail(NamedTuple):
@@ -74,13 +81,14 @@ def get_holiday_url(lang: Lang = Lang.EN, year: int = 2024):
     return f"{base_url}{lang_suffix}.model.{year_model}.json"
 
 
-def get_holiday(year: int = 2024) -> List[Dict[str, Dict]]:
+def get_holiday(year: int = 2024) -> List[Dict]:
     data_th = get_holiday_data(Lang.TH, year)
     data_en = get_holiday_data(Lang.EN, year)
-    holiday = {}
+    holiday = []
     for (data_key, entry) in data_en.items():
-        data_key = f"{entry.year_ce}{entry.month_index+1:02d}{entry.day:02d}"
-        holiday[data_key] = Holiday(
+        date_stamp = f"{entry.year_ce}{entry.month_index+1:02d}{entry.day:02d}"
+        holiday.append(Holiday(
+            date_stamp = date_stamp,
             day_of_week_index = entry.day_of_week_index,
             day_of_week_th = entry.day_of_week_th,
             day_of_week_en = entry.day_of_week_en,
@@ -96,7 +104,7 @@ def get_holiday(year: int = 2024) -> List[Dict[str, Dict]]:
             year_be = entry.year_be,
             description_th = data_th[data_key].description,
             description_en = entry.description
-        )._asdict()
+        )._asdict())
 
     return holiday
 
@@ -244,12 +252,20 @@ if __name__ == "__main__":
     now = datetime.now()
     current_year = now.year
     next_year = current_year + 1
-    current_year_holiday = get_holiday(current_year)
-    next_year_holiday = get_holiday(next_year)
-    holiday = {
-        current_year: current_year_holiday,
-        next_year: next_year_holiday
-    }
+    current_year_holiday = HolidayInYear(
+        year_be = current_year + 543,
+        year_ce = current_year,
+        data = get_holiday(current_year)
+    )._asdict()
+    next_year_holiday = HolidayInYear(
+        year_be = next_year + 543,
+        year_ce = next_year,
+        data = get_holiday(next_year)
+    )._asdict()
+    holiday = [
+        current_year_holiday,
+        next_year_holiday
+    ]
     holiday_json = dump_json_to_string(holiday)
     digest = create_hash(holiday_json)
     try:

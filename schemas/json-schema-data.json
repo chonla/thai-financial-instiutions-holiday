@@ -1,0 +1,130 @@
+{
+  "$id": "https://raw.githubusercontent.com/chonla/thai-financial-instiutions-holiday/refs/heads/main/data.schema.json",
+  "type": "array",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Holiday",
+  "description": "Thai Financial Institutions Holiday",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "required": [
+      "yearCe",
+      "yearBe",
+      "data"
+    ],
+    "properties": {
+      "yearCe": {
+        "description": "Year in Christian era",
+        "type": "number"
+      },
+      "yearBe": {
+        "description": "Year in Buddhist era",
+        "type": "number"
+      },
+      "data": {
+        "description": "Holiday detail",
+        "type": "array",
+        "uniqueItems": true,
+        "minItems": 1,
+        "items": {
+          "required": [
+            "dateStamp",
+            "dayOfWeekIndex",
+            "dayOfWeekTh",
+            "dayOfWeekEn",
+            "dayOfWeekAbbrEn",
+            "dayOfWeekAbbrTh",
+            "day",
+            "monthIndex",
+            "monthTh",
+            "monthAbbrTh",
+            "monthEn",
+            "monthAbbrEn",
+            "yearCe",
+            "yearBe",
+            "descriptionTh",
+            "descriptionEn"
+          ],
+          "properties": {
+            "dateStamp": {
+              "description": "Date stamp in YYYYMMDD format",
+              "type": "string",
+              "minLength": 1
+            },
+            "dayOfWeekIndex": {
+              "description": "Day of week index, start from zero",
+              "type": "number"
+            },
+            "dayOfWeekTh": {
+              "description": "Name of day of week in Thai",
+              "type": "string",
+              "minLength": 1
+            },
+            "dayOfWeekEn": {
+              "description": "Name of day of week in English",
+              "type": "string",
+              "minLength": 1
+            },
+            "dayOfWeekAbbrEn": {
+              "description": "Abbreviated Name of day of week in English",
+              "type": "string",
+              "minLength": 1
+            },
+            "dayOfWeekAbbrTh": {
+              "description": "Abbreviated Name of day of week in Thai",
+              "type": "string",
+              "minLength": 1
+            },
+            "day": {
+              "description": "Day of month",
+              "type": "number"
+            },
+            "monthIndex": {
+              "description": "Month index, start from zero",
+              "type": "number"
+            },
+            "monthTh": {
+              "description": "Name of month in Thai",
+              "type": "string",
+              "minLength": 1
+            },
+            "monthAbbrTh": {
+              "description": "Abbreviated name of month in Thai",
+              "type": "string",
+              "minLength": 1
+            },
+            "monthEn": {
+              "description": "Name of month in English",
+              "type": "string",
+              "minLength": 1
+            },
+            "monthAbbrEn": {
+              "description": "Abbreviated name of month in English",
+              "type": "string",
+              "minLength": 1
+            },
+            "yearCe": {
+              "description": "Year in Christian era",
+              "type": "number"
+            },
+            "yearBe": {
+              "description": "Year in Buddhist era",
+              "type": "number"
+            },
+            "descriptionTh": {
+              "description": "Description of holiday in Thai",
+              "type": "string",
+              "minLength": 1
+            },
+            "descriptionEn": {
+              "description": "Description of holiday in English",
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}
