@@ -1,11 +1,12 @@
 from enum import StrEnum
 from datetime import datetime
-from typing import List, Dict, NamedTuple
+from typing import Any, List, Dict, NamedTuple, IO
 from requests import get
 import json
 import hashlib
 import sys
 import re
+import humps
 
 
 version_json_filename = "VERSION.json"
@@ -231,6 +232,14 @@ def bump_version(new_hash: str, new_date: str):
         f.write(new_content)
 
 
+def dump_json_to_file(data: Any, file: IO[str]):
+    json.dump(humps.camelize(data), file, indent=4, ensure_ascii=False)
+
+
+def dump_json_to_string(data: Any) -> str:
+    return json.dumps(humps.camelize(data), ensure_ascii=False)
+
+
 if __name__ == "__main__":
     now = datetime.now()
     current_year = now.year
@@ -241,7 +250,7 @@ if __name__ == "__main__":
         current_year: current_year_holiday,
         next_year: next_year_holiday
     }
-    holiday_json = json.dumps(holiday, ensure_ascii=False)
+    holiday_json = dump_json_to_string(holiday)
     digest = create_hash(holiday_json)
     try:
         if is_data_change(digest):
@@ -249,9 +258,9 @@ if __name__ == "__main__":
                 "hash": digest
             }
             with open(version_json_filename, 'w') as f:
-                json.dump(version_json, f, indent=4)
+                dump_json_to_file(version_json, f)
             with open("data.json", "w") as f:
-                json.dump(holiday, f, indent=4, ensure_ascii=False)
+                dump_json_to_file(holiday, f)
             bump_version(digest, now.strftime("%b %d, %Y"))
             print("Date is updated.")
         else:
