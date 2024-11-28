@@ -496,6 +496,24 @@
                 "descriptionEn": "Substitution for Visakha Bucha Day (Sunday 11th May 2025)"
             },
             {
+                "dateStamp": "20250602",
+                "dayOfWeekIndex": 1,
+                "dayOfWeekTh": "วันจันทร์",
+                "dayOfWeekEn": "Monday",
+                "dayOfWeekAbbrEn": "Mon",
+                "dayOfWeekAbbrTh": "จ.",
+                "day": 2,
+                "monthIndex": 5,
+                "monthTh": "มิถุนายน",
+                "monthAbbrTh": "มิ.ย.",
+                "monthEn": "June",
+                "monthAbbrEn": "Jun",
+                "yearCe": 2025,
+                "yearBe": 2568,
+                "descriptionTh": "วันหยุดพิเศษ",
+                "descriptionEn": "Additional special holiday (added)"
+            },
+            {
                 "dateStamp": "20250603",
                 "dayOfWeekIndex": 2,
                 "dayOfWeekTh": "วันอังคาร",
@@ -548,6 +566,24 @@
                 "yearBe": 2568,
                 "descriptionTh": "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระเจ้าอยู่หัว",
                 "descriptionEn": "H.M. King Maha Vajiralongkorn Phra Vajiraklaochaoyuhua’s Birthday"
+            },
+            {
+                "dateStamp": "20250811",
+                "dayOfWeekIndex": 1,
+                "dayOfWeekTh": "วันจันทร์",
+                "dayOfWeekEn": "Monday",
+                "dayOfWeekAbbrEn": "Mon",
+                "dayOfWeekAbbrTh": "จ.",
+                "day": 11,
+                "monthIndex": 7,
+                "monthTh": "สิงหาคม",
+                "monthAbbrTh": "ส.ค.",
+                "monthEn": "August",
+                "monthAbbrEn": "Aug",
+                "yearCe": 2025,
+                "yearBe": 2568,
+                "descriptionTh": "วันหยุดพิเศษ",
+                "descriptionEn": "Additional special holiday (added)"
             },
             {
                 "dateStamp": "20250812",
