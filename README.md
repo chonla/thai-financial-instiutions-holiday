@@ -7,3 +7,7 @@
 ## JSON Schema
 
 See [schema](./schemas/json-schema-data.json)
+
+## Rendered Calendar
+
+See [rendered calendar](./CALENDAR.md)
