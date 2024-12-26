@@ -25,7 +25,7 @@ jobs:
       with:
         python-version: "3.12"
     - run: |
-        pip install -r requirements.pip && python updater/updater.py
+        pip install -r requirements.pip && python updater/updater.py && python presenter/presenter.py
 
     - uses: stefanzweifel/git-auto-commit-action@v5
       id: auto-commit-action #mandatory for the output to show up in ${{ steps }}
