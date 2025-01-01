@@ -112,12 +112,14 @@ def get_holiday(year: int = 2024) -> List[Dict]:
 def get_holiday_data(lang: Lang, year: int) -> Dict[str, HolidayDetail]:
     url = get_holiday_url(lang, year)
     resp = get(url)
-    data = resp.json()
     holiday = {}
-    for entry in data["holidayCalendarLists"]:
-        parsed_data = parse_date_entry(entry, lang)
-        data_key = f"{parsed_data.year_ce}{parsed_data.month_index+1:02d}{parsed_data.day:02d}"
-        holiday[data_key] = parsed_data
+    if resp.status_code == 200:
+        data = resp.json()
+        if "holidayCalendarLists" in data:
+            for entry in data["holidayCalendarLists"]:
+                parsed_data = parse_date_entry(entry, lang)
+                data_key = f"{parsed_data.year_ce}{parsed_data.month_index+1:02d}{parsed_data.day:02d}"
+                holiday[data_key] = parsed_data
 
     return holiday
 
