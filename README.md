@@ -2,7 +2,7 @@
 
 | Updated Date | Data Hash |
 | --- | --- |
-| <!--Date:Begin-->Jan 01, 2025<!--Date:End--> | <!--Version:Begin-->ee2c52d506757b0403829e15ac33ee2c<!--Version:End--> |
+| <!--Date:Begin-->Feb 12, 2026<!--Date:End--> | <!--Version:Begin-->3fb707f4d1d35154370101f117367694<!--Version:End--> |
 
 ## JSON Schema
 
